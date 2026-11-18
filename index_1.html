@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Para Fran ♥</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9D%A4%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f0e6; --ink:#3b2f2a; --muted:#8a7a70; --accent:#d9576b; --accent-soft:#fbe3e6; --card:#fffaf3;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html,body{min-height:100%}
+body{
+  font-family:Nunito,system-ui,sans-serif;color:var(--ink);background:var(--bg);
+  background-image:radial-gradient(circle at 15% 0%,#fff7ec 0,transparent 45%),radial-gradient(circle at 95% 85%,#f2dfcf 0,transparent 50%);
+  background-attachment:fixed;overflow-x:hidden;-webkit-tap-highlight-color:transparent;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+.btn{
+  display:inline-block;background:var(--accent);color:#fff;padding:12px 22px;border-radius:999px;font-weight:700;
+  box-shadow:0 8px 20px -10px rgba(217,87,107,.8);transition:transform .2s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn.ghost{background:#fff;color:var(--ink);box-shadow:0 8px 20px -12px rgba(59,47,42,.5)}
+.btn.small{padding:8px 14px;font-size:14px}
+
+/* ---------- Intro / sobre ---------- */
+#intro{
+  position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;
+  background:var(--bg);transition:opacity .9s ease, visibility .9s;
+}
+#intro.gone{opacity:0;visibility:hidden}
+.env{position:relative;width:min(320px,80vw);aspect-ratio:3/2;cursor:pointer;perspective:900px;margin-top:80px;outline:none}
+.env>div{position:absolute;inset:0;border-radius:10px}
+.env>.env-back{background:#e5bf9a;box-shadow:0 22px 44px -20px rgba(90,50,30,.55);z-index:1}
+.env>.letter{
+  inset:7% 6%;z-index:2;background:var(--card);border-radius:6px;display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-start;padding-top:10%;text-align:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.08);transition:transform 1s cubic-bezier(.2,.8,.2,1) .55s;
+}
+.letter .to{font-family:Caveat,cursive;font-size:clamp(30px,8.5vw,38px);line-height:1}
+.letter .sm{font-size:13px;color:var(--muted);margin-top:6px;letter-spacing:.04em}
+.env>.env-front{background:#f1d1b0;clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%);z-index:3}
+.env>.env-flap{
+  background:#dcae84;clip-path:polygon(0 0,100% 0,50% 58%);transform-origin:top center;z-index:4;
+  border-radius:10px 10px 0 0;transition:transform .7s ease, z-index 0s linear .35s;
+}
+.env>.seal{
+  position:absolute;inset:auto;left:50%;top:55%;width:46px;height:46px;border-radius:50%;z-index:5;
+  background:var(--accent);color:#fff;display:grid;place-items:center;font-size:20px;
+  transform:translate(-50%,-50%);box-shadow:0 4px 10px rgba(150,40,60,.4);transition:transform .4s, opacity .4s;
+  animation:beat 1.6s ease-in-out infinite;
+}
+@keyframes beat{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.1)}}
+.env.open>.seal{animation:none;opacity:0;transform:translate(-50%,-50%) scale(.4)}
+.env.open>.env-flap{transform:rotateX(180deg);z-index:1}
+.env.open>.letter{transform:translateY(-58%)}
+.intro-hint{color:var(--muted);font-size:15px;min-height:22px;transition:opacity .3s}
+#enterBtn{opacity:0;transform:translateY(10px);pointer-events:none;transition:opacity .6s, transform .6s}
+#enterBtn.show{opacity:1;transform:none;pointer-events:auto}
+
+/* ---------- App / páginas ---------- */
+#app{opacity:0;transition:opacity .9s ease .2s;padding:30px 18px 60px;max-width:760px;margin:0 auto}
+#app.in{opacity:1}
+.page{display:none}
+.page.active{display:block;animation:pageIn .55s cubic-bezier(.2,.8,.2,1) both}
+@keyframes pageIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:700;color:var(--accent)}
+h1{font-family:Fraunces,serif;font-weight:600;font-size:clamp(34px,9vw,48px);line-height:1.1;margin:8px 0 10px}
+h2{font-family:Fraunces,serif;font-weight:600;font-size:clamp(28px,7vw,36px);line-height:1.15;margin:6px 0 8px}
+.sub{color:var(--muted);max-width:460px;line-height:1.55}
+.center{text-align:center}
+.center .sub{margin:0 auto}
+.back{
+  display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;background:#fff;
+  font-weight:700;font-size:14px;box-shadow:0 6px 16px -12px rgba(59,47,42,.6);margin-bottom:20px;
+}
+.page-head{margin-bottom:24px}
+
+/* Inicio */
+.today{
+  position:relative;margin:26px auto 18px;max-width:440px;background:#ffe27a;padding:30px 26px 22px;transform:rotate(-1.2deg);
+  box-shadow:0 18px 30px -18px rgba(60,40,20,.5), inset 0 -24px 30px -26px rgba(0,0,0,.15);text-align:center;
+}
+.today::before{content:"";position:absolute;top:-11px;left:50%;width:84px;height:24px;transform:translateX(-50%) rotate(-3deg);background:rgba(255,255,255,.6)}
+.today .lbl{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8a6a1f}
+.today .why{font-family:Caveat,cursive;font-size:clamp(26px,7vw,32px);line-height:1.2;margin:10px 0 14px;transition:opacity .3s, transform .3s}
+.today .why.swap{opacity:0;transform:translateY(8px)}
+.today button{font-size:14px;font-weight:700;color:#8a6a1f}
+.countdown{max-width:440px;margin:0 auto 6px;text-align:center;color:var(--muted)}
+.countdown b{font-family:Fraunces,serif;font-size:28px;color:var(--accent);display:block}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+.tile{
+  background:#fff;border-radius:18px;padding:18px 16px 16px;box-shadow:0 12px 26px -20px rgba(60,40,20,.6);
+  transition:transform .25s, box-shadow .25s;display:flex;flex-direction:column;gap:4px;
+  animation:pop .55s cubic-bezier(.2,.9,.3,1.2) backwards;animation-delay:var(--d);
+}
+.tile:hover{transform:translateY(-4px);box-shadow:0 18px 30px -20px rgba(60,40,20,.7)}
+.tile .ico{font-size:26px;margin-bottom:6px}
+.tile b{font-family:Fraunces,serif;font-weight:600;font-size:18px;line-height:1.2}
+.tile span{font-size:13px;color:var(--muted);line-height:1.35}
+.tile.wide{grid-column:1/-1;background:var(--accent-soft)}
+@keyframes pop{from{opacity:0;transform:translateY(18px) scale(.92)}}
+.sign{text-align:center;margin-top:40px;font-family:Caveat,cursive;font-size:26px;color:var(--muted)}
+
+/* Post-its */
+.board-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 4px 22px}
+.progress{color:var(--muted);font-size:14px}
+.board{display:grid;grid-template-columns:repeat(auto-fill,minmax(138px,1fr));gap:22px 18px;padding:6px}
+.note{
+  position:relative;aspect-ratio:1;background:var(--c);transform:rotate(var(--r));
+  box-shadow:0 12px 18px -12px rgba(60,40,20,.45), inset 0 -18px 24px -20px rgba(0,0,0,.12);
+  display:flex;align-items:center;justify-content:center;padding:14px;text-align:center;
+  transition:transform .25s ease, box-shadow .25s ease;font-family:Caveat,cursive;
+}
+.note::before{
+  content:"";position:absolute;top:-9px;left:50%;width:58px;height:20px;transform:translateX(-50%) rotate(-3deg);
+  background:rgba(255,255,255,.55);box-shadow:0 1px 2px rgba(0,0,0,.06);
+}
+.note:hover,.note:focus-visible{transform:translateY(-5px) rotate(0deg);box-shadow:0 18px 24px -14px rgba(60,40,20,.5);outline:none}
+.page.active .note{animation:popR .55s cubic-bezier(.2,.9,.3,1.2) backwards;animation-delay:var(--d)}
+@keyframes popR{from{opacity:0;transform:translateY(18px) rotate(var(--r)) scale(.85)}}
+.note .closed{font-size:28px;font-weight:700;opacity:.8}
+.note .heart{position:absolute;bottom:10px;right:12px;color:var(--accent);font-size:16px;opacity:.7}
+.note .peek{font-size:18px;line-height:1.15;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;opacity:.85}
+.note .tick{position:absolute;top:8px;right:10px;font-family:Nunito,sans-serif;font-size:12px;opacity:.45}
+.extra{margin-top:30px;text-align:center}
+
+/* Overlay del post-it grande */
+.overlay{position:fixed;inset:0;z-index:40;visibility:hidden}
+.overlay.show{visibility:visible}
+.scrim{position:absolute;inset:0;background:rgba(59,47,42,.38);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);opacity:0;transition:opacity .4s}
+.overlay.show .scrim{opacity:1}
+.overlay.closing .scrim{opacity:0}
+.big{
+  position:fixed;transform-origin:0 0;display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:38px 30px;box-shadow:0 30px 60px -25px rgba(40,20,10,.6), inset 0 -30px 40px -30px rgba(0,0,0,.15);
+}
+.big::before{content:"";position:absolute;top:-12px;left:50%;width:90px;height:28px;transform:translateX(-50%) rotate(-3deg);background:rgba(255,255,255,.55)}
+.big p{font-family:Caveat,cursive;font-size:clamp(26px,7.2vw,35px);line-height:1.2;opacity:0;transform:translateY(6px);transition:opacity .4s, transform .4s}
+.overlay.text .big p{opacity:1;transform:none}
+.ov-actions{
+  position:absolute;left:0;right:0;bottom:calc(30px + env(safe-area-inset-bottom));display:flex;gap:12px;justify-content:center;
+  opacity:0;transform:translateY(12px);transition:opacity .35s, transform .35s;
+}
+.overlay.text .ov-actions{opacity:1;transform:none}
+
+/* Razones (mazo) */
+.deck{position:relative;max-width:400px;margin:10px auto 0;aspect-ratio:4/5}
+.deck::before,.deck::after{
+  content:"";position:absolute;inset:0;border-radius:20px;background:#fff;box-shadow:0 14px 30px -22px rgba(60,40,20,.6);
+}
+.deck::before{transform:rotate(-4deg) translateY(8px);background:#ffe6eb}
+.deck::after{transform:rotate(3deg) translateY(4px);background:#fff3e2}
+.rcard{
+  position:absolute;inset:0;z-index:2;border-radius:20px;background:#fff;cursor:pointer;
+  box-shadow:0 22px 40px -24px rgba(60,40,20,.7);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:34px 28px;text-align:center;user-select:none;
+}
+.rcard .rnum{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.rcard .rpre{font-family:Fraunces,serif;font-size:20px;color:var(--muted);margin-top:16px}
+.rcard .rtext{font-family:Caveat,cursive;font-size:clamp(28px,7.6vw,36px);line-height:1.2;margin-top:6px}
+.rcard .rheart{position:absolute;bottom:20px;color:var(--accent);font-size:20px}
+.deck-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:28px}
+.deck-hint{text-align:center;color:var(--muted);font-size:13px;margin-top:12px}
+
+/* Carta */
+.paper{
+  border-radius:12px;background:var(--card);padding:28px 24px 24px;
+  box-shadow:0 20px 40px -28px rgba(60,40,20,.7);
+  font-family:Caveat,cursive;font-size:clamp(23px,5.8vw,27px);line-height:36px;
+}
+.paper p{margin-bottom:22px}
+.page.active .letter-body p{animation:fadeUp .8s ease backwards;animation-delay:calc(var(--i) * 180ms + 200ms)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}}
+.paper .from{text-align:right;color:var(--accent);margin-bottom:0}
+
+/* Promesas */
+.promises{display:flex;flex-direction:column;gap:14px;counter-reset:p}
+.promise{
+  position:relative;background:#fff;border-radius:16px;padding:18px 18px 18px 62px;line-height:1.5;
+  box-shadow:0 12px 26px -20px rgba(60,40,20,.6);
+}
+.page.active .promise{animation:fadeUp .6s ease backwards;animation-delay:calc(var(--i) * 110ms)}
+.promise::before{
+  counter-increment:p;content:counter(p);position:absolute;left:16px;top:16px;width:32px;height:32px;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent);font-weight:700;display:grid;place-items:center;font-size:15px;
+}
+.promise-foot{margin-top:26px;text-align:center;font-family:Caveat,cursive;font-size:26px;line-height:1.25;color:var(--accent)}
+
+/* Ábrelo cuando… */
+.group-title{font-family:Fraunces,serif;font-weight:600;font-size:20px;margin:26px 4px 12px}
+.letters{display:flex;flex-direction:column;gap:12px}
+.envcard{background:#fff;border-radius:16px;box-shadow:0 10px 26px -18px rgba(60,40,20,.5);overflow:hidden}
+.env-head{width:100%;display:flex;align-items:center;gap:14px;padding:16px 18px;text-align:left}
+.env-ico{flex:none;width:44px;height:32px;border-radius:5px;background:#f1d1b0;position:relative;overflow:hidden}
+.env-ico::before{content:"";position:absolute;inset:0;background:#dcae84;clip-path:polygon(0 0,100% 0,50% 60%);transition:transform .45s;transform-origin:top}
+.env-ico::after{content:"♥";position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);font-size:11px;color:var(--accent)}
+.envcard.open .env-ico::before{transform:rotateX(180deg)}
+.env-head small{display:block;font-size:12px;color:var(--muted);letter-spacing:.04em}
+.env-head strong{font-family:Fraunces,serif;font-weight:600;font-size:18px}
+.chev{margin-left:auto;font-size:24px;color:var(--muted);transition:transform .35s}
+.envcard.open .chev{transform:rotate(90deg)}
+.env-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s ease}
+.envcard.open .env-body{grid-template-rows:1fr}
+.env-body>div{overflow:hidden}
+.envcard .paper{margin:0 14px 16px;box-shadow:none;font-size:24px;line-height:34px;padding:18px 18px 14px;}
+.envcard .paper p{margin-bottom:0}
+.envcard .paper .from{margin-top:6px}
+.envcard .paper .btn{font-family:Nunito,sans-serif;font-size:15px;line-height:1.2;margin-top:12px}
+
+/* Respiración */
+.breath{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px}
+.orb-wrap{position:relative;width:min(280px,72vw);aspect-ratio:1;display:grid;place-items:center;margin:4px 0 6px}
+.orb-ring{position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(217,87,107,.25)}
+.orb{
+  position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff3ec 0,#ffc6c9 35%,#f39aa5 70%,#e97d8f 100%);
+  box-shadow:0 0 60px rgba(243,154,165,.55);transform:scale(.55);transition:transform 4s ease-in-out;
+}
+.orb-label{position:relative;font-family:Fraunces,serif;font-size:26px;color:#5a2b33}
+.orb-sec{display:block;font-family:Nunito,sans-serif;font-size:14px;color:#7a4a52;margin-top:2px;min-height:18px}
+.tip{color:var(--muted);font-size:14px;max-width:340px;line-height:1.5}
+#breathCount{font-weight:700;color:var(--accent);min-height:22px;max-width:340px;line-height:1.4}
+
+/* Canciones */
+.song-slot{margin-top:14px}
+.song{
+  position:relative;display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:999px;
+  background:#fff;box-shadow:0 8px 20px -14px rgba(59,47,42,.55);max-width:100%;transition:transform .2s;
+}
+.song:hover{transform:translateY(-2px)}
+.song-ico{flex:none;width:30px;height:30px;border-radius:50%;background:#1db954;color:#fff;display:grid;place-items:center;font-size:15px}
+.song-txt{display:flex;flex-direction:column;line-height:1.15;min-width:0}
+.song-txt b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.song-txt small{font-size:12px;color:var(--muted)}
+.song-go{color:var(--muted);font-size:13px;margin-left:2px}
+.envcard .paper .song{font-family:Nunito,sans-serif;margin-top:12px;background:#fff7ef}
+.center .song-slot{display:flex;justify-content:center}
+.songs{display:flex;flex-direction:column;gap:14px}
+.songcard{position:relative;background:#fff;border-radius:18px;padding:16px 16px 14px;box-shadow:0 12px 26px -20px rgba(60,40,20,.6)}
+.page.active .songcard{animation:fadeUp .6s ease backwards;animation-delay:calc(var(--i) * 90ms)}
+.songcard .goes{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.songcard h3{font-family:Fraunces,serif;font-weight:600;font-size:20px;margin-top:4px}
+.songcard .art{color:var(--muted);font-size:14px}
+.songcard p{margin:10px 0 12px;line-height:1.5}
+.songcard .listen{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:#14833b}
+.songcard .listen::before{content:"▶";width:24px;height:24px;border-radius:50%;background:#1db954;color:#fff;display:grid;place-items:center;font-size:10px}
+.playlist-link{display:block;text-align:center;margin-top:24px}
+
+/* Nuestra canción */
+.ours{
+  position:relative;overflow:hidden;max-width:520px;margin:22px auto 6px;border-radius:22px;padding:22px 20px;
+  background:linear-gradient(135deg,#3b2f2a 0%,#5b3a41 60%,#7a3f4c 100%);color:#fff;
+  display:flex;align-items:center;gap:18px;box-shadow:0 22px 40px -24px rgba(60,20,30,.8);
+}
+.ours::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 15%,rgba(255,200,210,.25),transparent 45%);pointer-events:none}
+.vinyl{
+  flex:none;position:relative;width:96px;height:96px;border-radius:50%;
+  background:repeating-radial-gradient(circle,#1b1412 0 2px,#2a201d 2px 4px);
+  box-shadow:0 8px 18px rgba(0,0,0,.45), inset 0 0 0 2px rgba(255,255,255,.06);animation:spin 5s linear infinite;
+}
+.vinyl::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 30deg,transparent 0 40deg,rgba(255,255,255,.12) 50deg,transparent 70deg 220deg,rgba(255,255,255,.08) 235deg,transparent 255deg)}
+.vinyl span{position:absolute;inset:32%;border-radius:50%;background:var(--accent);display:grid;place-items:center;font-size:13px;color:#fff;box-shadow:inset 0 0 0 3px rgba(255,255,255,.25)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ours .o-txt{position:relative;z-index:1;min-width:0}
+.ours .o-eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#ffc6d3}
+.ours h3{font-family:Fraunces,serif;font-weight:600;font-size:26px;line-height:1.1;margin:4px 0 2px}
+.ours .o-art{font-size:13px;color:rgba(255,255,255,.7)}
+.ours .o-line{font-family:Caveat,cursive;font-size:22px;line-height:1.2;margin:8px 0 12px}
+.ours .o-play{display:inline-flex;align-items:center;gap:8px;background:#1db954;color:#fff;font-weight:700;font-size:14px;padding:9px 16px;border-radius:999px}
+.ours .o-play:hover{filter:brightness(1.08)}
+.eq{display:inline-flex;gap:2px;align-items:flex-end;height:12px}
+.eq i{width:3px;background:#fff;border-radius:2px;animation:eq 1s ease-in-out infinite}
+.eq i:nth-child(2){animation-delay:.2s}.eq i:nth-child(3){animation-delay:.4s}
+@keyframes eq{0%,100%{height:3px}50%{height:12px}}
+.intro-song{opacity:0;transform:translateY(8px);transition:opacity .6s .3s, transform .6s .3s;pointer-events:none;font-size:14px;color:var(--muted);display:inline-flex;align-items:center;gap:8px}
+.intro-song.show{opacity:1;transform:none;pointer-events:auto}
+.intro-song b{color:var(--accent)}
+.page.active .ours{animation:pop .6s cubic-bezier(.2,.9,.3,1.2) backwards .1s}
+.ps{margin-top:22px;text-align:center}
+.ps p{font-family:Caveat,cursive;font-size:24px;color:var(--muted);margin-bottom:10px}
+@media (prefers-reduced-motion:reduce){.vinyl,.eq i{animation:none!important}}
+
+/* Modo admin */
+.xdel{
+  display:none;position:absolute;top:-9px;right:-9px;z-index:6;width:28px;height:28px;border-radius:50%;
+  background:#3b2f2a;color:#fff;font-size:13px;line-height:1;place-items:center;box-shadow:0 4px 10px rgba(0,0,0,.25);
+}
+.xdel::before{content:"✕"}
+body.admin .xdel{display:grid}
+.is-hidden>.xdel{background:var(--accent)}
+.is-hidden>.xdel::before{content:"↺"}
+body:not(.admin) .is-hidden{display:none!important}
+body.admin .is-hidden{opacity:.4;outline:2px dashed var(--accent);outline-offset:3px}
+.letter-body p,.envcard{position:relative}
+.envcard>.xdel{top:12px;right:46px}
+.tile{position:relative}
+.song>.xdel{top:-10px;right:-10px}
+body:not(.admin) .env-group.all-hidden{display:none}
+.rlist{display:none;flex-direction:column;gap:12px}
+.rlist .ritem{position:relative;background:#fff;border-radius:14px;padding:14px 16px;font-family:Caveat,cursive;font-size:24px;line-height:1.2;box-shadow:0 10px 22px -18px rgba(60,40,20,.6)}
+body.admin .rlist{display:flex}
+body.admin .deck,body.admin .deck-nav,body.admin .deck-hint{display:none}
+#adminBtn{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:35;background:#3b2f2a;color:#fff;font-size:14px;padding:10px 16px}
+body.admin #adminBtn{display:none}
+.adminbar{
+  position:fixed;left:0;right:0;top:0;z-index:36;display:none;align-items:center;gap:12px;justify-content:center;flex-wrap:wrap;
+  padding:10px 14px;background:#3b2f2a;color:#fff;font-size:14px;text-align:center;
+}
+body.admin .adminbar{display:flex}
+body.admin #app{padding-top:76px}
+.adminbar .btn{padding:7px 14px;font-size:13px}
+.toast{
+  position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);z-index:70;background:#3b2f2a;color:#fff;padding:10px 16px;
+  border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .3s, transform .3s;
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Confeti */
+.confetti{position:fixed;top:-30px;z-index:60;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translate(var(--dx),112vh) rotate(var(--rot))}}
+
+@media (prefers-reduced-motion:reduce){
+  .page.active,.page.active .note,.tile,.page.active .promise,.page.active .letter-body p,.env>.seal{animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- Intro -->
+<section id="intro">
+  <div class="env" id="env" role="button" tabindex="0" aria-label="Abrir el sobre">
+    <div class="env-back"></div>
+    <div class="letter"><p class="to">Para <span data-nombre></span></p><p class="sm">de <span data-firma></span>, con todo mi amor</p></div>
+    <div class="env-front"></div>
+    <div class="env-flap"></div>
+    <div class="seal">♥</div>
+  </div>
+  <p class="intro-hint" id="hint">toca el sobre</p>
+  <button class="btn" id="enterBtn">Ver lo que te hice</button>
+  <a class="intro-song" id="introSong" data-ours-link target="_blank" rel="noopener"><span>♪</span> Antes de entrar, pon <b>nuestra canción</b></a>
+</section>
+
+<main id="app" aria-hidden="true">
+
+  <!-- INICIO -->
+  <section class="page active" id="p-inicio">
+    <div class="center">
+      <p class="eyebrow">Esto es tuyo, hoy y siempre</p>
+      <h1>Hola, <span data-apodo></span></h1>
+      <p class="sub">Lo hice para tu defensa, pero no es solo para hoy. Es un lugar al que puedes volver cada vez que necesites acordarte de lo importante que eres para mí.</p>
+    </div>
+
+    <div class="today">
+      <p class="lbl">Hoy te elijo porque…</p>
+      <p class="why" id="todayWhy"></p>
+      <button id="todayMore">otra razón ↻</button>
+    </div>
+
+    <p class="countdown" id="countdown" hidden></p>
+
+    <div class="ours">
+      <div class="vinyl" aria-hidden="true"><span>♥</span></div>
+      <div class="o-txt">
+        <p class="o-eyebrow">Nuestra canción</p>
+        <h3>Afortunada</h3>
+        <p class="o-art">Francisca Valenzuela</p>
+        <p class="o-line" data-ours-line></p>
+        <a class="o-play" data-ours-link target="_blank" rel="noopener"><span class="eq"><i></i><i></i><i></i></span> Ponla mientras lo recorres</a>
+      </div>
+    </div>
+
+    <nav class="tiles" aria-label="Secciones">
+      <a class="tile wide" href="#defensa" data-del="sec-defensa" style="--d:0ms"><span class="ico">📝</span><b>Para tu defensa</b><span>Tus post-its de hoy, para cuando los nervios aprieten.</span></a>
+      <a class="tile" href="#razones" data-del="sec-razones" style="--d:60ms"><span class="ico">💌</span><b>Por qué te elijo</b><span>Las razones, una por una.</span></a>
+      <a class="tile" href="#carta" data-del="sec-carta" style="--d:120ms"><span class="ico">✍️</span><b>Una carta</b><span>Lo que no siempre supe decirte.</span></a>
+      <a class="tile" href="#promesas" data-del="sec-promesas" style="--d:180ms"><span class="ico">🤝</span><b>Lo que te prometo</b><span>Con hechos, no solo palabras.</span></a>
+      <a class="tile" href="#abrelo" data-del="sec-abrelo" style="--d:240ms"><span class="ico">✉️</span><b>Ábrelo cuando…</b><span>Para los días que lo necesites.</span></a>
+      <a class="tile" href="#respira" data-del="sec-respira" style="--d:300ms"><span class="ico">🌬️</span><b>Respira conmigo</b><span>Un minuto para soltar los nervios.</span></a>
+      <a class="tile" href="#canciones" data-del="sec-canciones" style="--d:360ms"><span class="ico">🎧</span><b>Nuestras canciones</b><span>Las de nuestra playlist que más nos cuentan.</span></a>
+    </nav>
+
+    <p class="sign">Te amo, <span data-firma></span></p>
+  </section>
+
+  <!-- DEFENSA -->
+  <section class="page" id="p-defensa">
+    <a class="back" href="#">← Volver</a>
+    <div class="page-head">
+      <p class="eyebrow">Para hoy</p>
+      <h2>Tus post-its</h2>
+      <p class="sub">Como hoy no los tienes a mano, te los dejé aquí. Ábrelos cuando los necesites, todas las veces que quieras.</p>
+      <div class="song-slot" data-song="suerte"></div>
+    </div>
+    <div class="board-top">
+      <span class="progress" id="progress"></span>
+      <button class="btn ghost small" id="randomBtn">Uno al azar ✨</button>
+    </div>
+    <div class="board" id="board"></div>
+    <div class="extra"><a class="btn ghost" href="#respira">🌬️ Respirar un minuto antes de entrar</a></div>
+  </section>
+
+  <!-- RAZONES -->
+  <section class="page" id="p-razones">
+    <a class="back" href="#">← Volver</a>
+    <div class="page-head center">
+      <p class="eyebrow">Para cuando lo dudes</p>
+      <h2>Por qué te elijo</h2>
+      <p class="sub">Me dijiste que a veces no tenías quién te explicara por qué quiero estar contigo. Aquí va, sin que tengas que preguntar.</p>
+      <div class="song-slot" data-song="lover"></div>
+    </div>
+    <div class="deck">
+      <div class="rcard" id="rcard" role="button" tabindex="0" aria-live="polite">
+        <p class="rnum" id="rnum"></p>
+        <p class="rpre" id="rpre">Te elijo porque…</p>
+        <p class="rtext" id="rtext"></p>
+        <span class="rheart">♥</span>
+      </div>
+    </div>
+    <div class="deck-nav">
+      <button class="btn ghost small" id="rprev" aria-label="Razón anterior">←</button>
+      <button class="btn" id="rnext">Otra razón →</button>
+    </div>
+    <p class="deck-hint">toca la tarjeta o desliza</p>
+    <div class="rlist" id="rlist"></div>
+  </section>
+
+  <!-- CARTA -->
+  <section class="page" id="p-carta">
+    <a class="back" href="#">← Volver</a>
+    <div class="page-head">
+      <p class="eyebrow">Una carta</p>
+      <h2>Lo que quiero que sepas</h2>
+      <div class="song-slot" data-song="peace"></div>
+    </div>
+    <div class="paper letter-body" id="letterBody"></div>
+    <div class="ps">
+      <p>P.D.: Relee esto con nuestra canción de fondo.</p>
+      <div class="song-slot" data-song="afortunada"></div>
+    </div>
+  </section>
+
+  <!-- PROMESAS -->
+  <section class="page" id="p-promesas">
+    <a class="back" href="#">← Volver</a>
+    <div class="page-head">
+      <p class="eyebrow">Con hechos, no solo palabras</p>
+      <h2>Lo que te prometo</h2>
+      <p class="sub">Te prometí que no iba a quedar solo en palabras. Esto es lo que me comprometo a hacer.</p>
+      <div class="song-slot" data-song="teVoy"></div>
+    </div>
+    <div class="promises" id="promises"></div>
+    <p class="promise-foot">Si algún día se me olvida alguna,<br>muéstrame esta página.</p>
+  </section>
+
+  <!-- ÁBRELO CUANDO -->
+  <section class="page" id="p-abrelo">
+    <a class="back" href="#">← Volver</a>
+    <div class="page-head">
+      <p class="eyebrow">Cartitas guardadas</p>
+      <h2>Ábrelo cuando…</h2>
+      <p class="sub">Unas para hoy y otras para siempre. Puedes abrirlas las veces que quieras.</p>
+    </div>
+    <div id="envGroups"></div>
+  </section>
+
+  <!-- RESPIRA -->
+  <section class="page" id="p-respira">
+    <a class="back" href="#">← Volver</a>
+    <div class="breath">
+      <div class="orb-wrap">
+        <div class="orb-ring"></div>
+        <div class="orb" id="orb"></div>
+        <div class="orb-label"><span id="orbLabel">Respira conmigo</span><span class="orb-sec" id="orbSec"></span></div>
+      </div>
+      <p id="breathCount"></p>
+      <button class="btn" id="breathBtn">Empezar</button>
+      <p class="tip">Inhala por la nariz 4 segundos, sostén 4, bota el aire lento por la boca 6. Son cinco ciclos, poco más de un minuto. Imagina que estoy al lado tuyo respirando contigo.</p>
+      <div class="song-slot" data-song="respiro"></div>
+    </div>
+  </section>
+  <!-- CANCIONES -->
+  <section class="page" id="p-canciones">
+    <a class="back" href="#">← Volver</a>
+    <div class="page-head">
+      <p class="eyebrow">De nuestra playlist</p>
+      <h2>Nuestras canciones</h2>
+      <p class="sub">No todas, solo las que más cuentan lo que somos. Cada una va con una parte de esto.</p>
+    </div>
+    <div class="ours">
+      <div class="vinyl" aria-hidden="true"><span>♥</span></div>
+      <div class="o-txt">
+        <p class="o-eyebrow">Nuestra canción</p>
+        <h3>Afortunada</h3>
+        <p class="o-art">Francisca Valenzuela</p>
+        <p class="o-line" data-ours-line></p>
+        <a class="o-play" data-ours-link target="_blank" rel="noopener"><span class="eq"><i></i><i></i><i></i></span> Escuchar en Spotify</a>
+      </div>
+    </div>
+    <div class="songs" id="songs" style="margin-top:22px"></div>
+    <a class="btn ghost playlist-link" id="playlistLink" target="_blank" rel="noopener">🎧 Escuchar toda nuestra playlist ↗</a>
+  </section>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<!-- Post-it grande -->
+<div class="overlay" id="overlay">
+  <div class="scrim" id="scrim"></div>
+  <div class="big" id="big"><p id="bigText"></p></div>
+  <div class="ov-actions">
+    <button class="btn ghost" id="anotherBtn">Otro ✨</button>
+    <button class="btn" id="closeBtn">Guardar ♥</button>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   EDITA AQUÍ: nombres, fecha y textos.
+   Para quitar algo, borra su línea completa (con la coma).
+   Cada texto va entre comillas "así" y termina en coma.
+   ========================================================= */
+const CONFIG = {
+  nombre: "Fran",          // en el sobre
+  apodo: "wawa",           // en el saludo
+  firma: "Seba",
+  proximaVisita: "",       // ej. "2026-12-05" → muestra cuenta regresiva. Vacío = se oculta.
+  playlist: "https://open.spotify.com/playlist/3vgrTr7pHfgCUC6B1cUdan",
+
+  nuestraCancion: {
+    track: "2oGcLhbdlhz7EOwIqcLTcJ",
+    linea: "Cada vez que suena pienso en ti, y en lo afortunado que soy yo."
+  },
+
+  canciones: {
+    suerte:   { titulo: "Suerte (Whenever, Wherever)", artista: "Shakira", track: "3TY1PFZXmYeiLcXygB74My",
+                va: "Para tu defensa",
+                por: "Básicamente porque hoy toca desearte suerte… y porque cuando termines, toca bailar." },
+    respiro:  { titulo: "Respiro", artista: "Franco Simone", track: "7kaPPdWqCor6ic4oWmoz7S",
+                va: "Respira conmigo",
+                por: "Una canción que se llama Respiro tenía que estar aquí. Ponla cuando termines el ejercicio." },
+    lover:    { titulo: "Lover", artista: "Taylor Swift", track: "1dGr1c8CrMLDpV6mPbImSI",
+                va: "Por qué te elijo",
+                por: "Es la canción de elegir a alguien para todos los días, no solo para los buenos. Así te elijo yo." },
+    peace:    { titulo: "peace", artista: "Taylor Swift", track: "7MbT4I8qGntX4fMdqMQgke",
+                va: "La carta",
+                por: "Es reconocer que no siempre lo hago perfecto, pero que voy a estar ahí, siempre." },
+    teVoy:    { titulo: "Te Voy a Mostrar", artista: "Julieta Venegas", track: "6bxZEPqWc9oSqYBa1NgA7d",
+                va: "Lo que te prometo",
+                por: "El título lo dice todo: no te lo quiero decir, te lo quiero mostrar." },
+    comeBack: { titulo: "Come Back...Be Here (Taylor's Version)", artista: "Taylor Swift", track: "4pNApnaUWAL2J4KO2eqokq",
+                va: "Ábrelo cuando me extrañes",
+                por: "Es la canción de extrañar a alguien que está lejos y querer que esté aquí. Nuestra distancia en una canción." },
+    kingdom:  { titulo: "Til Kingdom Come", artista: "Coldplay", track: "1wQXj5bgxyZQ2XmE2X9s6n",
+                va: "Ábrelo cuando dudes de nosotros",
+                por: "Es quedarse y esperar a alguien sin fecha de término. Así me quedo yo." },
+    newYears: { titulo: "New Year's Day", artista: "Taylor Swift", track: "7F5oktn5YOsR9eR5YsFtqb",
+                va: "Ábrelo cuando nos hayamos peleado",
+                por: "No habla de la fiesta, habla de quién se queda al día siguiente a ordenar. Yo me quedo." }
+  },
+
+  postits: [
+    "Nadie conoce tu práctica mejor que tú. Tú estuviste ahí, con esos niños, todos los días.",
+    "Acuérdate del niño de primero que calmaste. Esa eres tú, y eso es lo que vas a contar.",
+    "Habla lento. Lo que a ti te parece lentísimo, para ellos es perfecto.",
+    "Tus nervios son tu cuerpo diciendo que esto te importa. Y está bien que te importe.",
+    "Sé todo lo que te costó llegar aquí, con la U, la familia y el cansancio encima. Te mereces este momento.",
+    "Las preguntas difíciles no son ataques. Significan que les interesó lo que hiciste.",
+    "Hombros abajo, mandíbula suelta, pies en el suelo. Ahí está.",
+    "\"No lo sé, pero lo voy a revisar\" también es una gran respuesta.",
+    "Un tropiezo en una lámina no borra todo lo que sabes.",
+    "Eres mucho más capaz de lo que tú crees. Yo lo veo todos los días.",
+    "Mira a alguien amable en la sala y háblale a esa persona.",
+    "Si te equivocas, sonríes, corriges y sigues. Nadie lo va a recordar.",
+    "Esos niños tuvieron suerte de tenerte. Cuéntales eso.",
+    "Toma agua. Respira. Una lámina a la vez.",
+    "Estoy orgulloso de ti, pase lo que pase hoy.",
+    "Cuando termines, avísame y te llamo altiro. Quiero saberlo todo."
+  ],
+
+  razones: [
+    "cuando estaba eligiendo mi práctica, lo que más te importaba era que fuera algo que me gustara.",
+    "el día antes de empezar mi práctica me escribiste que sabías que era bueno cuando me lo proponía. Lo leí más de una vez.",
+    "cuidas a la Juli y a la Isi con una paciencia que admiro.",
+    "me contaste cómo calmaste a un niño de primero básico y se te notaba el orgullo. Esos niños tienen suerte de tenerte.",
+    "me encanta tu risa, y lo fácil que es reírme contigo, aunque sea de un TikTok tonto.",
+    "todavía me debes reconocer que el mejor regalo para la Isi fue el mío.",
+    "cuando te apoyas en mi pecho, el que se calma soy yo.",
+    "con la práctica, la U, tu familia y el cansancio encima, igual te haces tiempo para nosotros.",
+    "eres honesta conmigo aunque te cueste, y eso me hace mejor.",
+    "luchas por lo nuestro, incluso cuando yo no lo hice como debía.",
+    "esa noche de julio, cuando todo estaba difícil, elegiste seguir. Yo también te elegí, y te sigo eligiendo.",
+    "nos pedimos perdón, nos perdonamos y siempre volvemos a encontrarnos.",
+    "cada vez que nos vemos los días se me pasan volando, y la despedida me pesa.",
+    "algún día quiero despertar contigo todos los días, y es lo que más quiero.",
+    "cuando pienso en mi futuro, tú estás en todos los planes.",
+    "eres mucho más fuerte de lo que tú crees.",
+    "eres tú. Simplemente tú. Y no te cambiaría por nada."
+  ],
+
+  carta: [
+    "Fran:",
+    "Te hice esto porque siempre tienes tus post-its y hoy no los tenías. Pero mientras lo armaba me di cuenta de que quería decirte mucho más que \"tú puedes\".",
+    "Sé que este año ha sido difícil. La distancia, tu práctica, la mía, la tesis, tu cansancio, tu salud, tu familia. Y sé que muchas veces sentiste que luchabas sola por nosotros, y que yo te daba seguridad solo cuando tú me la pedías. Eso te dolió, y no quiero que vuelva a ser así.",
+    "Así que te lo digo sin que tengas que preguntarlo: te amo. No dejé de amarte en ninguna de nuestras crisis. Ni en las peleas, ni en los silencios, ni cuando estaba enojado, ni cuando no supe decirlo bien.",
+    "Te elijo a ti. Quiero estar en todos tus procesos: en la práctica, en la U, en tus días buenos y en los malos, y en todo lo que venga después.",
+    "Esa noche de julio te prometí que no iba a quedar solo en palabras. Esta página tiene palabras, sí, pero también tiene compromisos, y quiero que me los recuerdes si algún día se me olvidan.",
+    "Algún día vamos a despertar juntos todos los días. Mientras tanto, aquí tienes un lugar al que volver cada vez que necesites acordarte de lo importante que eres para mí."
+  ],
+
+  promesas: [
+    "Llamarte sin que me lo pidas, y cuidar nuestras llamadas aunque la semana esté pesada.",
+    "Decirte seguido por qué te elijo, sin que tengas que preguntarlo.",
+    "Cuando algo te moleste, escucharte primero. Sin bromas, sin cambiar el tema y sin minimizar lo que sientes.",
+    "Si necesito una pausa en una discusión, decirte cuándo la retomamos, en vez de cortar la conversación.",
+    "Preguntarte cómo estás, cómo va la práctica y cómo te sientes, antes de suponer que estás enojada conmigo.",
+    "Contarte mis planes y equilibrar el tiempo con mis amigos.",
+    "Avisarte siempre si me pasa algo, aunque sea desde el teléfono de otra persona.",
+    "Tener siempre nuestra próxima visita en el calendario, para que la distancia tenga fecha de término."
+  ],
+
+  sobres: [
+    { grupo: "Para hoy", cuando: "estés nerviosa antes de entrar",
+      texto: "Los nervios no significan que no estés lista, significan que te importa. Siente los pies en el suelo, suelta los hombros y respira conmigo un minuto. Después entras y haces lo que ya sabes hacer.",
+      accion: "respirar" },
+    { grupo: "Para hoy", cuando: "te quedes en blanco",
+      texto: "Está permitido hacer una pausa. Di \"déjenme ordenar la idea\", toma agua y mira tu lámina. Cinco segundos de silencio se sienten eternos para ti, para ellos no son nada. La idea vuelve, siempre vuelve." },
+    { grupo: "Para hoy", cuando: "te hagan una pregunta difícil",
+      texto: "Respira antes de responder. Repite la pregunta con tus palabras, así ganas tiempo y te aseguras de entenderla. Si no sabes algo, decirlo con calma es honesto y profesional. Nadie espera que lo sepas todo." },
+    { grupo: "Para hoy", cuando: "termines la defensa",
+      texto: "¡Lo hiciste! Pase lo que pase con los comentarios, ya hiciste lo más difícil: pararte ahí y defender tu trabajo. Estoy muy, muy orgulloso de ti. Ahora avísame, que te quiero llamar.",
+      accion: "celebrar" },
+
+    { grupo: "Para siempre", cuando: "me extrañes", cancion: "comeBack",
+      texto: "Yo también te estoy extrañando, te lo aseguro. Cierra los ojos y acuérdate de cómo se siente estar apoyada en mi pecho. Esta distancia tiene fecha de término, y cada día que pasa es un día menos." },
+    { grupo: "Para siempre", cuando: "dudes de nosotros", cancion: "kingdom",
+      texto: "Es normal tener dudas, no te asustes por tenerlas. Pero no las cargues sola: háblame. Y mientras tanto, anda a \"Por qué te elijo\" y léelas todas. Ninguna es de relleno." },
+    { grupo: "Para siempre", cuando: "nos hayamos peleado", cancion: "newYears",
+      texto: "Aunque esté enojado, aunque no te haya contestado bien, te sigo amando. Una pelea no cambia eso. Lo vamos a conversar con calma, y vamos a volver a encontrarnos como siempre lo hacemos." },
+    { grupo: "Para siempre", cuando: "estés cansada de todo",
+      texto: "No tienes que poder con todo hoy. Está bien parar, dormir, llorar un rato o no contestar a nadie. Yo no me voy a ningún lado. Cuando quieras, aquí estoy." },
+    { grupo: "Para siempre", cuando: "tengas un mal día en el colegio",
+      texto: "Un mal día no dice nada de la profesional que eres. Acuérdate del niño de primero que calmaste y del profesor que te felicitó. Esa también eres tú, aunque hoy no lo sientas. Cuéntame qué pasó, te quiero escuchar." },
+    { grupo: "Para siempre", cuando: "necesites reírte",
+      texto: "Te recuerdo que el mejor regalo de cumpleaños para la Isi fue el mío. Discútemelo cuando quieras. (Te amo igual aunque estés equivocada.)" }
+  ]
+};
+/* ========================================================= */
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+$$('[data-nombre]').forEach(e => e.textContent = CONFIG.nombre);
+$$('[data-apodo]').forEach(e => e.textContent = CONFIG.apodo);
+$$('[data-firma]').forEach(e => e.textContent = CONFIG.firma);
+
+/* ---------- Ocultos (modo admin) ---------- */
+const hidden = new Set();
+let canAdmin = false, hiddenRef = null, writing = Promise.resolve();
+
+function decorate(root = document){
+  root.querySelectorAll('[data-del]').forEach(el => {
+    if (el.querySelector(':scope > .xdel')) return;
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'xdel'; b.setAttribute('aria-label', 'Ocultar o recuperar');
+    b.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); toggleHidden(el.dataset.del); });
+    el.appendChild(b);
+  });
+}
+function applyHidden(){
+  $$('[data-del]').forEach(el => el.classList.toggle('is-hidden', hidden.has(el.dataset.del)));
+  $$('.env-group').forEach(g => {
+    const anyVisible = [...g.querySelectorAll('.envcard')].some(c => !hidden.has(c.dataset.del));
+    g.classList.toggle('all-hidden', !anyVisible);
+  });
+  paintProgress();
+  paintToday();
+  refreshDeck();
+}
+function toggleHidden(id){
+  if (!canAdmin || !hiddenRef) return;
+  hidden.has(id) ? hidden.delete(id) : hidden.add(id);
+  applyHidden();
+  const ids = [...hidden];
+  writing = writing
+    .then(() => hiddenRef.set({ ids }))
+    .catch(() => toast('No se pudo guardar el cambio. Intenta otra vez.'));
+}
+let toastT;
+function toast(msg){
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+async function initShared(){
+  for (let k = 0; k < 30 && !(window.claude && typeof window.claude.use === 'function'); k++)
+    await new Promise(r => setTimeout(r, 100));
+  if (!(window.claude && typeof window.claude.use === 'function')) return;
+  const [db, user] = await Promise.all([claude.use('db'), claude.use('user')]);
+  if (!db) return;
+  hiddenRef = db.doc('config/hidden');
+  hiddenRef.onSnapshot(snap => {
+    const d = snap.exists ? snap.data() : null;
+    hidden.clear();
+    (d && Array.isArray(d.ids) ? d.ids : []).forEach(x => { if (typeof x === 'string') hidden.add(x); });
+    applyHidden();
+  }, () => {});
+  let owner = false;
+  try { owner = user ? !!(await user.isOwner()) : false; } catch (e) {}
+  if (owner) { canAdmin = true; $('#adminBtn').hidden = false; }
+}
+
+/* ---------- Canciones ---------- */
+const SONGS = CONFIG.canciones;
+const trackUrl = s => 'https://open.spotify.com/track/' + s.track;
+function songChip(key){
+  const s = SONGS[key]; if (!s) return null;
+  const a = document.createElement('a');
+  a.className = 'song'; a.href = trackUrl(s); a.target = '_blank'; a.rel = 'noopener';
+  a.dataset.del = 'song-' + key;
+  a.innerHTML = '<span class="song-ico">♪</span><span class="song-txt"><b></b><small></small></span><span class="song-go">↗</span>';
+  a.querySelector('b').textContent = s.titulo;
+  a.querySelector('small').textContent = s.artista;
+  return a;
+}
+$$('.song-slot').forEach(slot => { const c = songChip(slot.dataset.song); if (c) slot.appendChild(c); });
+$('#playlistLink').href = CONFIG.playlist;
+Object.entries(SONGS).forEach(([key, s], i) => {
+  const d = document.createElement('div');
+  d.className = 'songcard'; d.dataset.del = 'song-' + key; d.style.setProperty('--i', i);
+  d.innerHTML = '<p class="goes"></p><h3></h3><span class="art"></span><p class="why"></p><a class="listen" target="_blank" rel="noopener">Escuchar en Spotify</a>';
+  d.querySelector('.goes').textContent = s.va;
+  d.querySelector('h3').textContent = s.titulo;
+  d.querySelector('.art').textContent = s.artista;
+  d.querySelector('.why').textContent = s.por;
+  d.querySelector('.listen').href = trackUrl(s);
+  $('#songs').appendChild(d);
+});
+
+/* ---------- Nuestra canción ---------- */
+const OURS = CONFIG.nuestraCancion;
+const oursUrl = 'https://open.spotify.com/track/' + OURS.track;
+SONGS.afortunada = SONGS.afortunada || { titulo: "Afortunada", artista: "Francisca Valenzuela", track: OURS.track };
+$$('[data-ours-link]').forEach(a => a.href = oursUrl);
+$$('[data-ours-line]').forEach(p => p.textContent = OURS.linea);
+$$('.song-slot[data-song="afortunada"]').forEach(slot => { if (!slot.firstChild) { const c = songChip('afortunada'); delete c.dataset.del; slot.appendChild(c); } });
+
+/* ---------- Intro ---------- */
+const env = $('#env'), intro = $('#intro'), app = $('#app'), enterBtn = $('#enterBtn');
+function enterApp(){
+  intro.classList.add('gone');
+  app.classList.add('in');
+  app.setAttribute('aria-hidden', 'false');
+}
+function openEnvelope(){
+  if (env.classList.contains('open')) return;
+  env.classList.add('open');
+  $('#hint').style.opacity = 0;
+  setTimeout(() => { enterBtn.classList.add('show'); $('#introSong').classList.add('show'); }, 1500);
+}
+env.addEventListener('click', openEnvelope);
+env.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEnvelope(); } });
+enterBtn.addEventListener('click', enterApp);
+
+/* ---------- Navegación ---------- */
+const pages = $$('.page');
+function render(){
+  const h = location.hash.slice(1);
+  const id = pages.some(p => p.id === 'p-' + h) ? h : 'inicio';
+  pages.forEach(p => p.classList.toggle('active', p.id === 'p-' + id));
+  window.scrollTo(0, 0);
+  if (id !== 'respira') stopBreath();
+}
+addEventListener('hashchange', render);
+
+/* ---------- Razones visibles ---------- */
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+const visibleReasons = () => CONFIG.razones.map((t, i) => ({ t, i })).filter(r => !hidden.has('r' + r.i));
+
+/* ---------- Inicio: razón del día + cuenta regresiva ---------- */
+const todayWhy = $('#todayWhy'), todayBox = $('.today');
+let todayOffset = 0;
+function paintToday(){
+  const vr = visibleReasons();
+  todayBox.hidden = !vr.length;
+  if (!vr.length) return;
+  const idx = (Math.floor(Date.now() / 86400000) + todayOffset) % vr.length;
+  todayWhy.textContent = cap(vr[idx].t);
+}
+$('#todayMore').addEventListener('click', () => {
+  todayWhy.classList.add('swap');
+  setTimeout(() => { todayOffset++; paintToday(); todayWhy.classList.remove('swap'); }, 300);
+});
+if (CONFIG.proximaVisita) {
+  const target = new Date(CONFIG.proximaVisita + 'T00:00:00');
+  const now = new Date(); now.setHours(0, 0, 0, 0);
+  const days = Math.round((target - now) / 86400000);
+  const cd = $('#countdown');
+  if (days > 1) cd.innerHTML = `<b>${days} días</b>para volver a verte`;
+  else if (days === 1) cd.innerHTML = `<b>Mañana</b>nos vemos ♥`;
+  else if (days === 0) cd.innerHTML = `<b>¡Hoy nos vemos!</b>`;
+  if (days >= 0) cd.hidden = false;
+}
+
+/* ---------- Post-its ---------- */
+const COLORS = ['#ffe27a','#ffc6d3','#c5ead6','#cfe1ff','#ffd3a6','#e3d3ff'];
+const KEY = 'postits-fran-leidos';
+let read = new Set();
+try { read = new Set(JSON.parse(localStorage.getItem(KEY) || '[]')); } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify([...read])); } catch (e) {} };
+
+const notes = CONFIG.postits.map((text, i) => ({ text, color: COLORS[i % COLORS.length], rot: ((i * 37) % 11) - 5 }));
+const board = $('#board'), progress = $('#progress');
+const noteEl = i => board.children[i];
+const visibleNotes = () => notes.map((_, i) => i).filter(i => !hidden.has('p' + i));
+
+function paintNote(i){
+  const el = noteEl(i), n = notes[i];
+  el.innerHTML = '';
+  if (read.has(i)) {
+    const p = document.createElement('span'); p.className = 'peek'; p.textContent = n.text;
+    const t = document.createElement('span'); t.className = 'tick'; t.textContent = '✓';
+    el.append(p, t);
+    el.setAttribute('aria-label', 'Post-it: ' + n.text);
+  } else {
+    el.innerHTML = '<span class="closed">ábreme</span><span class="heart">♥</span>';
+    el.setAttribute('aria-label', 'Post-it sin abrir');
+  }
+  decorate(board);
+}
+function paintProgress(){
+  const vis = visibleNotes();
+  const r = vis.filter(i => read.has(i)).length;
+  progress.textContent = r >= vis.length
+    ? 'Los abriste todos ♥ Puedes releerlos cuando quieras.'
+    : `${r} de ${vis.length} abiertos`;
+}
+notes.forEach((n, i) => {
+  const b = document.createElement('button');
+  b.className = 'note';
+  b.dataset.del = 'p' + i;
+  b.style.setProperty('--c', n.color);
+  b.style.setProperty('--r', n.rot + 'deg');
+  b.style.setProperty('--d', (i * 45) + 'ms');
+  b.addEventListener('click', () => openNote(i));
+  board.appendChild(b);
+  paintNote(i);
+});
+
+const overlay = $('#overlay'), big = $('#big'), bigText = $('#bigText');
+let current = null;
+const fromRect = (r, size, left, top, rot) =>
+  `translate(${r.left - left}px, ${r.top - top}px) scale(${r.width / size}) rotate(${rot}deg)`;
+function markRead(i){
+  if (!read.has(i)) { read.add(i); save(); paintNote(i); paintProgress(); }
+}
+function openNote(i){
+  current = i;
+  const n = notes[i], r = noteEl(i).getBoundingClientRect();
+  const size = Math.min(innerWidth * 0.84, 380, innerHeight * 0.62);
+  const left = (innerWidth - size) / 2, top = Math.max(24, (innerHeight - size) / 2 - 40);
+  big.style.background = n.color;
+  bigText.textContent = n.text;
+  Object.assign(big.style, { width: size + 'px', height: size + 'px', left: left + 'px', top: top + 'px', transition: 'none', transform: fromRect(r, size, left, top, n.rot) });
+  overlay.classList.remove('text', 'closing');
+  overlay.classList.add('show');
+  void big.offsetWidth;
+  big.style.transition = 'transform .7s cubic-bezier(.2,.9,.25,1)';
+  big.style.transform = 'rotate(-1.5deg)';
+  setTimeout(() => overlay.classList.add('text'), 320);
+  markRead(i);
+}
+function closeNote(){
+  if (current === null) return;
+  const r = noteEl(current).getBoundingClientRect();
+  const size = parseFloat(big.style.width), left = parseFloat(big.style.left), top = parseFloat(big.style.top);
+  overlay.classList.remove('text');
+  overlay.classList.add('closing');
+  big.style.transition = 'transform .5s cubic-bezier(.4,0,.2,1)';
+  big.style.transform = r.width
+    ? fromRect(r, size, left, top, notes[current].rot)
+    : 'scale(.6) rotate(-6deg)';
+  setTimeout(() => { overlay.classList.remove('show', 'closing'); current = null; }, 500);
+}
+function pickRandom(exclude){
+  const vis = visibleNotes();
+  let pool = vis.filter(i => !read.has(i) && i !== exclude);
+  if (!pool.length) pool = vis.filter(i => i !== exclude);
+  if (!pool.length) pool = vis;
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+function anotherNote(){
+  const j = pickRandom(current);
+  if (j === undefined) return;
+  overlay.classList.remove('text');
+  big.style.transition = 'transform .28s ease-in';
+  big.style.transform = 'rotate(5deg) scale(.9) translateY(14px)';
+  setTimeout(() => {
+    current = j;
+    big.style.background = notes[j].color;
+    bigText.textContent = notes[j].text;
+    big.style.transition = 'transform .5s cubic-bezier(.2,.9,.3,1.25)';
+    big.style.transform = 'rotate(-1.5deg)';
+    setTimeout(() => overlay.classList.add('text'), 200);
+    markRead(j);
+  }, 280);
+}
+$('#scrim').addEventListener('click', closeNote);
+$('#closeBtn').addEventListener('click', closeNote);
+$('#anotherBtn').addEventListener('click', anotherNote);
+$('#randomBtn').addEventListener('click', () => {
+  const j = pickRandom(-1);
+  if (j === undefined) return;
+  noteEl(j).scrollIntoView({ block: 'nearest' });
+  openNote(j);
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNote(); });
+
+/* ---------- Razones (mazo + lista para admin) ---------- */
+const rcard = $('#rcard'), rnum = $('#rnum'), rtext = $('#rtext'), rpre = $('#rpre'), rnext = $('#rnext');
+let ri = 0;
+CONFIG.razones.forEach((t, i) => {
+  const d = document.createElement('div');
+  d.className = 'ritem'; d.dataset.del = 'r' + i; d.textContent = cap(t);
+  $('#rlist').appendChild(d);
+});
+function paintReason(){
+  const vr = visibleReasons();
+  if (ri > vr.length) ri = 0;
+  if (ri < vr.length) {
+    rnum.textContent = `${ri + 1} de ${vr.length}`;
+    rpre.hidden = false;
+    rtext.textContent = vr[ri].t;
+    rnext.textContent = 'Otra razón →';
+  } else {
+    rnum.textContent = vr.length ? 'y la última, por ahora' : '';
+    rpre.hidden = true;
+    rtext.textContent = 'Podría seguir. Esta lista no se termina, se va alargando contigo.';
+    rnext.textContent = vr.length ? 'Volver a empezar ↻' : '♥';
+  }
+}
+function refreshDeck(){ paintReason(); }
+function moveReason(dir){
+  const total = visibleReasons().length + 1;
+  const out = dir > 0 ? -1 : 1;
+  const a = rcard.animate(
+    [{ transform: 'none', opacity: 1 }, { transform: `translateX(${out * 60}px) rotate(${out * 8}deg)`, opacity: 0 }],
+    { duration: 260, easing: 'ease-in' });
+  a.onfinish = () => {
+    ri = (ri + dir + total) % total;
+    paintReason();
+    rcard.animate(
+      [{ transform: `translateX(${-out * 40}px) rotate(${-out * 5}deg) scale(.96)`, opacity: 0 }, { transform: 'none', opacity: 1 }],
+      { duration: 420, easing: 'cubic-bezier(.2,.9,.3,1.15)' });
+  };
+}
+rnext.addEventListener('click', () => moveReason(1));
+$('#rprev').addEventListener('click', () => moveReason(-1));
+rcard.addEventListener('click', () => moveReason(1));
+rcard.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); moveReason(1); } });
+let tx = null;
+rcard.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+rcard.addEventListener('touchend', e => {
+  if (tx === null) return;
+  const dx = e.changedTouches[0].clientX - tx; tx = null;
+  if (Math.abs(dx) > 40) { e.preventDefault(); moveReason(dx < 0 ? 1 : -1); }
+});
+
+/* ---------- Carta ---------- */
+const lb = $('#letterBody');
+CONFIG.carta.forEach((t, i) => {
+  const p = document.createElement('p'); p.textContent = t; p.dataset.del = 'c' + i; p.style.setProperty('--i', i); lb.appendChild(p);
+});
+const fromP = document.createElement('p');
+fromP.className = 'from'; fromP.style.setProperty('--i', CONFIG.carta.length);
+fromP.textContent = `Te amo, ${CONFIG.apodo}. — ${CONFIG.firma}`;
+lb.appendChild(fromP);
+
+/* ---------- Promesas ---------- */
+const pw = $('#promises');
+CONFIG.promesas.forEach((t, i) => {
+  const d = document.createElement('div'); d.className = 'promise'; d.dataset.del = 'm' + i; d.style.setProperty('--i', i); d.textContent = t; pw.appendChild(d);
+});
+
+/* ---------- Ábrelo cuando… ---------- */
+const groups = {};
+CONFIG.sobres.forEach((s, i) => (groups[s.grupo] = groups[s.grupo] || []).push({ ...s, i }));
+const eg = $('#envGroups');
+Object.entries(groups).forEach(([name, list]) => {
+  const g = document.createElement('div'); g.className = 'env-group'; eg.appendChild(g);
+  const h = document.createElement('h3'); h.className = 'group-title'; h.textContent = name; g.appendChild(h);
+  const wrap = document.createElement('div'); wrap.className = 'letters'; g.appendChild(wrap);
+  list.forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'envcard'; card.dataset.del = 's' + s.i;
+    card.innerHTML = `
+      <button class="env-head" aria-expanded="false">
+        <span class="env-ico" aria-hidden="true"></span>
+        <span><small>Ábrelo cuando…</small><strong></strong></span>
+        <span class="chev" aria-hidden="true">›</span>
+      </button>
+      <div class="env-body"><div><div class="paper"><p class="msg"></p><p class="from"></p></div></div></div>`;
+    card.querySelector('strong').textContent = s.cuando;
+    card.querySelector('.msg').textContent = s.texto;
+    card.querySelector('.from').textContent = '— ' + CONFIG.firma;
+    const paper = card.querySelector('.paper');
+    if (s.cancion) { const c = songChip(s.cancion); if (c) paper.appendChild(c); }
+    if (s.accion === 'respirar') {
+      const b = document.createElement('button');
+      b.className = 'btn'; b.textContent = 'Respirar conmigo ahora';
+      b.addEventListener('click', () => { location.hash = 'respira'; setTimeout(startBreath, 500); });
+      paper.appendChild(b);
+    }
+    const head = card.querySelector('.env-head');
+    head.addEventListener('click', () => {
+      const open = card.classList.toggle('open');
+      head.setAttribute('aria-expanded', open);
+      if (open && s.accion === 'celebrar') setTimeout(burst, 350);
+    });
+    wrap.appendChild(card);
+  });
+});
+
+/* ---------- Respiración ---------- */
+const orb = $('#orb'), orbLabel = $('#orbLabel'), orbSec = $('#orbSec'), breathBtn = $('#breathBtn'), breathCount = $('#breathCount');
+const PHASES = [ { t: 'Inhala', s: 4, scale: 1 }, { t: 'Sostén', s: 4, scale: 1 }, { t: 'Exhala', s: 6, scale: .55 } ];
+const TOTAL = 5;
+let breathing = false, cycle = 0, pi = 0, phaseTimer = null, secTimer = null;
+function runPhase(){
+  if (!breathing) return;
+  const p = PHASES[pi];
+  orb.style.transitionDuration = p.s + 's';
+  orb.style.transform = `scale(${p.scale})`;
+  orbLabel.textContent = p.t;
+  let left = p.s;
+  orbSec.textContent = left;
+  clearInterval(secTimer);
+  secTimer = setInterval(() => { left--; orbSec.textContent = left > 0 ? left : ''; }, 1000);
+  phaseTimer = setTimeout(() => {
+    pi++;
+    if (pi === PHASES.length) {
+      pi = 0; cycle++;
+      if (cycle >= TOTAL) return finishBreath();
+      breathCount.textContent = `Ciclo ${cycle + 1} de ${TOTAL}`;
+    }
+    runPhase();
+  }, p.s * 1000);
+}
+function startBreath(){
+  if (breathing) return;
+  breathing = true; cycle = 0; pi = 0;
+  breathBtn.textContent = 'Parar';
+  breathCount.textContent = `Ciclo 1 de ${TOTAL}`;
+  runPhase();
+}
+function stopBreath(reset = true){
+  breathing = false;
+  clearTimeout(phaseTimer); clearInterval(secTimer);
+  orb.style.transitionDuration = '1.2s';
+  orb.style.transform = 'scale(.55)';
+  orbSec.textContent = '';
+  if (reset) { orbLabel.textContent = 'Respira conmigo'; breathCount.textContent = ''; breathBtn.textContent = 'Empezar'; }
+}
+function finishBreath(){
+  stopBreath(false);
+  orbLabel.textContent = 'Lista ♥';
+  breathCount.textContent = 'Hombros abajo, mandíbula suelta. Ya puedes entrar.';
+  breathBtn.textContent = 'Otra vez';
+}
+breathBtn.addEventListener('click', () => breathing ? stopBreath() : startBreath());
+
+/* ---------- Confeti ---------- */
+function burst(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const syms = ['♥', '✿', '★', '♥', '•'], cols = ['#d9576b', '#f2a541', '#7bc4a4', '#7aa6e8', '#b48be0'];
+  for (let k = 0; k < 80; k++) {
+    const c = document.createElement('span');
+    c.className = 'confetti';
+    c.textContent = syms[k % syms.length];
+    c.style.left = Math.random() * 100 + 'vw';
+    c.style.color = cols[k % cols.length];
+    c.style.fontSize = (12 + Math.random() * 20) + 'px';
+    c.style.setProperty('--dx', (Math.random() * 160 - 80) + 'px');
+    c.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+    c.style.animationDuration = (2.4 + Math.random() * 2.2) + 's';
+    c.style.animationDelay = (Math.random() * .6) + 's';
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 5500);
+  }
+}
+
+/* ---------- Arranque ---------- */
+decorate();
+applyHidden();
+render();
+if (location.hash.length > 1) { intro.style.transition = 'none'; enterApp(); }
+</script>
+</body>
+</html>
